@@ -11,15 +11,12 @@ import {
   ArrowLeft,
   ArrowUpRight,
   Camera,
-  Clapperboard,
   Code2,
   Download,
   Edit3,
   GitBranch,
   Image,
   LayoutDashboard,
-  Link2,
-  Mail,
   Menu,
   MousePointer2,
   Plus,
@@ -33,14 +30,15 @@ import {
 } from "lucide-react";
 import profileImage from "../assets/SahilFormalimage.jpeg";
 import {
-  coCurricularActivities,
   navItems,
   profile,
   projects,
   skills,
   stats,
   technicalEvents,
+  coCurricularActivities,
   timeline,
+  education,
 } from "./data.js";
 
 const ThreeHero = lazy(() => import("./ThreeHero.jsx"));
@@ -85,14 +83,6 @@ function normalizeItem(item, index = 0) {
 function getPageFromHash() {
   if (typeof window === "undefined") {
     return "home";
-  }
-
-  if (window.location.hash === "#activities-dashboard") {
-    return "activities";
-  }
-
-  if (window.location.hash === "#events-dashboard") {
-    return "events";
   }
 
   return "home";
@@ -166,13 +156,7 @@ function Header({ currentPage, onNavigate }) {
             <li key={item}>
               <a
                 className={currentPage === item.toLowerCase() ? "active" : ""}
-                href={
-                  item === "Activities"
-                    ? "#activities-dashboard"
-                    : item === "Events"
-                      ? "#events-dashboard"
-                      : `#${item.toLowerCase()}`
-                }
+                href={item === "Activities" ? "#activities-dashboard" : `#${item.toLowerCase()}`}
                 onClick={(event) => handleNavigate(event, item)}
               >
                 {item}
@@ -258,46 +242,6 @@ function MediaShowcase({ eyebrow, title, text, items, id, variant = "standard" }
           </motion.article>
         ))}
       </motion.div>
-    </section>
-  );
-}
-
-function DashboardGateway({ onOpen, activityCount, eventCount }) {
-  return (
-    <section className="section dashboard-gateway">
-      <SectionTitle
-        label="Dashboards"
-        title="Open detailed activity and event pages"
-        text="Manage co-curricular activities and technical events in focused dashboard pages with photos, videos, and descriptions."
-      />
-
-      <div className="gateway-grid">
-        <motion.button
-          className="gateway-card"
-          type="button"
-          onClick={() => onOpen("Activities")}
-          whileHover={{ y: -8, rotateX: 3 }}
-          transition={{ type: "spring", stiffness: 220, damping: 20 }}
-        >
-          <Camera size={28} />
-          <span>{activityCount} entries</span>
-          <h3>Co-curricular Dashboard</h3>
-          <p>Add activities, photos, videos, and short descriptions from one place.</p>
-        </motion.button>
-
-        <motion.button
-          className="gateway-card"
-          type="button"
-          onClick={() => onOpen("Events")}
-          whileHover={{ y: -8, rotateX: -3 }}
-          transition={{ type: "spring", stiffness: 220, damping: 20 }}
-        >
-          <Clapperboard size={28} />
-          <span>{eventCount} entries</span>
-          <h3>Technical Events Dashboard</h3>
-          <p>Show workshops, seminars, hackathons, media, outcomes, and learning.</p>
-        </motion.button>
-      </div>
     </section>
   );
 }
@@ -587,16 +531,7 @@ function DashboardPage({
 }
 
 function App() {
-  const [formStatus, setFormStatus] = useState("");
   const [page, setPage] = useState(getPageFromHash);
-  const [activityItems, setActivityItems, resetActivityItems] = useEditableItems(
-    coCurricularActivities,
-    "portfolio-co-curricular-items",
-  );
-  const [eventItems, setEventItems, resetEventItems] = useEditableItems(
-    technicalEvents,
-    "portfolio-technical-event-items",
-  );
   const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 28, restDelta: 0.001 });
@@ -614,71 +549,12 @@ function App() {
   const navigate = (item) => {
     const target = item.toLowerCase();
 
-    if (target === "activities" || target === "events") {
-      setPage(target);
-      window.history.pushState(
-        null,
-        "",
-        target === "activities" ? "#activities-dashboard" : "#events-dashboard",
-      );
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      return;
-    }
-
     setPage("home");
     window.history.pushState(null, "", `#${target}`);
     window.setTimeout(() => {
       document.getElementById(target)?.scrollIntoView({ behavior: "smooth" });
     }, 0);
   };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setFormStatus("Message saved locally. Connect Formspree later for real emails.");
-    event.currentTarget.reset();
-  };
-
-  if (page === "activities") {
-    return (
-      <>
-        <motion.div className="scroll-progress" style={{ scaleX }} />
-        <Header currentPage={page} onNavigate={navigate} />
-        <DashboardPage
-          eyebrow="Co-curricular dashboard"
-          title="Co-curricular activities"
-          description="Add and manage activity photos, videos, categories, descriptions, and personal highlights from this dashboard."
-          items={activityItems}
-          setItems={setActivityItems}
-          resetItems={resetActivityItems}
-          onBack={() => navigate("Home")}
-        />
-        <footer className="site-footer">
-          <p>Copyright 2026 {profile.name}. Built with React, Motion, and Three.js.</p>
-        </footer>
-      </>
-    );
-  }
-
-  if (page === "events") {
-    return (
-      <>
-        <motion.div className="scroll-progress" style={{ scaleX }} />
-        <Header currentPage={page} onNavigate={navigate} />
-        <DashboardPage
-          eyebrow="Technical events dashboard"
-          title="Technical events"
-          description="Show hackathons, seminars, workshops, photos, videos, event descriptions, and learning outcomes in a focused page."
-          items={eventItems}
-          setItems={setEventItems}
-          resetItems={resetEventItems}
-          onBack={() => navigate("Home")}
-        />
-        <footer className="site-footer">
-          <p>Copyright 2026 {profile.name}. Built with React, Motion, and Three.js.</p>
-        </footer>
-      </>
-    );
-  }
 
   return (
     <>
@@ -699,18 +575,14 @@ function App() {
               initial="hidden"
               animate="visible"
             >
-              <motion.p className="eyebrow hero-pill" variants={fadeUp}>
-                <Sparkles size={16} />
-                3D Animated Portfolio
-              </motion.p>
+              
               <motion.h1 variants={fadeUp}>
                 Hi, I am <span>{profile.name}</span>.
                 <br />
-                I design clean web experiences.
+                I am a Software Engineer.
               </motion.h1>
               <motion.p className="hero-text" variants={fadeUp}>
-                {profile.summary} This starter is ready for your real photo, resume,
-                project links, certificates, and achievements.
+                {profile.summary} 
               </motion.p>
 
               <motion.div className="hero-actions" variants={fadeUp}>
@@ -718,7 +590,7 @@ function App() {
                   <MousePointer2 size={18} />
                   View Projects
                 </a>
-                <a className="button ghost" href="/resume.pdf">
+                <a className="button ghost" href="/dist/Sahil Sahu Resume POD AI.pdf">
                   <Download size={18} />
                   Resume
                 </a>
@@ -744,9 +616,8 @@ function App() {
 
         <section id="about" className="section about-section">
           <SectionTitle
-            label="About"
+            label="MySelf"
             title="A focused introduction that feels personal."
-            text="Use this area to tell visitors who you are, what you are learning, and what type of work you want to do."
           />
 
           <motion.div
@@ -759,13 +630,13 @@ function App() {
             <motion.div className="about-copy" variants={fadeUp}>
               <h3>Profile</h3>
               <p>
-                I am a learning-focused developer who enjoys turning ideas into
-                polished web interfaces. My goal is to build projects that are useful,
-                fast, responsive, and easy for people to understand.
+                I am a passionate developer with interests in Web Development, IoT, and AI-based projects.
+Currently pursuing engineering, I enjoy building smart and user-friendly solutions for real-world problems.
+My strengths include problem-solving, teamwork, and continuously learning new technologies.
+I aim to create innovative, responsive, and impactful projects that combine creativity with technology.
               </p>
               <p>
-                Replace this text with your education, current course, college name,
-                strengths, career target, and the kind of projects you want to showcase.
+               
               </p>
             </motion.div>
 
@@ -780,11 +651,46 @@ function App() {
           </motion.div>
         </section>
 
+        <section id="education" className="section education-section">
+          <SectionTitle
+            label="Education"
+            title="Academic background"
+            text="A concise overview of my academic journey, highlighting institutions, degrees, and key achievements that have shaped my technical foundation."
+          />
+
+          <motion.div
+            className="education-grid"
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {education.map((edu) => (
+              <motion.article className="education-card" key={edu.id} variants={fadeUp}>
+                <div className="education-meta">
+                  <span className="edu-dates">{edu.start} — {edu.end}</span>
+                  <h3 className="edu-institution">{edu.institution}</h3>
+                  <p className="edu-degree"><strong>{edu.degree}</strong> · {edu.stream}</p>
+                  <p className="edu-desc">{edu.description}</p>
+
+                  {edu.achievements?.length ? (
+                    <div className="edu-highlights">
+                      {edu.achievements.map((a) => (
+                        <span key={a}>{a}</span>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+              </motion.article>
+            ))}
+          </motion.div>
+        </section>
+
         <section id="skills" className="section dark-band">
           <SectionTitle
             label="Skills"
             title="Tools and technologies"
-            text="A compact skills system that looks professional and stays readable on mobile."
+            text="Featuring the technical ecosystem behind my web development, software, and IoT projects."
           />
 
           <motion.div
@@ -810,8 +716,8 @@ function App() {
         <section id="projects" className="section projects-section">
           <SectionTitle
             label="Projects"
-            title="Featured project work"
-            text="Each project card has a 3D hover feel, stack labels, and clean action links."
+            title="Project work"
+            text="Experience projects through visually rich cards with elegant transitions and technology-focused highlights."
           />
 
           <motion.div
@@ -859,17 +765,81 @@ function App() {
           </motion.div>
         </section>
 
-        <DashboardGateway
-          activityCount={activityItems.length}
-          eventCount={eventItems.length}
-          onOpen={navigate}
-        />
+        <section id="events" className="section media-section">
+          <SectionTitle
+            label="Events"
+            title="Technical events"
+            text="A professional showcase of technical events, learning experiences, and collaborative innovation activities.."
+          />
+          <motion.div
+            className="media-grid"
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.16 }}
+          >
+            {technicalEvents.map((item) => (
+              <motion.article
+                className="media-card"
+                key={item.id}
+                variants={fadeUp}
+                whileHover={
+                  shouldReduceMotion
+                    ? undefined
+                    : { y: -10, rotateX: 3, rotateY: 3, scale: 1.012 }
+                }
+                transition={{ type: "spring", stiffness: 220, damping: 20 }}
+              >
+                <MediaFrame item={item} />
+                <div className="media-content">
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </div>
+              </motion.article>
+            ))}
+          </motion.div>
+        </section>
+
+        <section id="activities" className="section media-section">
+          <SectionTitle
+            label="Activities"
+            title="Co-curricular activities"
+            text="Explore my co-curricular journey featuring events, workshops, leadership activities, and collaborative experiences.."
+          />
+          <motion.div
+            className="media-grid"
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.16 }}
+          >
+            {coCurricularActivities.map((item) => (
+              <motion.article
+                className="media-card"
+                key={item.id}
+                variants={fadeUp}
+                whileHover={
+                  shouldReduceMotion
+                    ? undefined
+                    : { y: -10, rotateX: 3, rotateY: 3, scale: 1.012 }
+                }
+                transition={{ type: "spring", stiffness: 220, damping: 20 }}
+              >
+                <MediaFrame item={item} />
+                <div className="media-content">
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </div>
+              </motion.article>
+            ))}
+          </motion.div>
+        </section>
 
         <section id="timeline" className="section timeline-section">
           <SectionTitle
-            label="Timeline"
+            label=""
             title="My development path"
-            text="Show your education, learning journey, internship experience, certificates, or achievements here."
+            text="A journey of learning, innovation, achievements, and continuous technical growth."
           />
 
           <div className="timeline">
@@ -892,77 +862,10 @@ function App() {
           </div>
         </section>
 
-        <section id="contact" className="section contact-section">
-          <SectionTitle
-            label="Contact"
-            title="Let us build something useful."
-            text="Keep your contact area direct. Recruiters and collaborators should know exactly how to reach you."
-          />
-
-          <div className="contact-grid">
-            <motion.div
-              className="contact-info"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.35 }}
-            >
-              <a href={`mailto:${profile.email}`}>
-                <Mail size={20} />
-                {profile.email}
-              </a>
-              <a href={profile.github}>
-                <GitBranch size={20} />
-                GitHub
-              </a>
-              <a href={profile.linkedin}>
-                <Link2 size={20} />
-                LinkedIn
-              </a>
-            </motion.div>
-
-            <motion.form
-              className="contact-form"
-              onSubmit={handleSubmit}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.35 }}
-            >
-              <label>
-                Name
-                <input name="name" type="text" placeholder="Enter your name" required />
-              </label>
-              <label>
-                Email
-                <input name="email" type="email" placeholder="Enter your email" required />
-              </label>
-              <label>
-                Message
-                <textarea name="message" placeholder="Write your message" required />
-              </label>
-              <button className="button primary" type="submit">
-                <Mail size={18} />
-                Send Message
-              </button>
-              <AnimatePresence>
-                {formStatus ? (
-                  <motion.p
-                    className="form-status"
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    role="status"
-                  >
-                    {formStatus}
-                  </motion.p>
-                ) : null}
-              </AnimatePresence>
-            </motion.form>
-          </div>
-        </section>
       </main>
 
       <footer className="site-footer">
-        <p>Copyright 2026 {profile.name}. Built with React, Motion, and Three.js.</p>
+        <p>Engineered with creativity and driven by technology.</p>
       </footer>
     </>
   );
