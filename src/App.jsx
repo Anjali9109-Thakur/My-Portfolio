@@ -28,7 +28,7 @@ import {
   Video,
   X,
 } from "lucide-react";
-import profileImage from "../assets/SahilFormalimage.jpeg";
+import profileImage from "../assets/anjaliformalimage.jpeg";
 import {
   navItems,
   profile,
@@ -590,7 +590,7 @@ function App() {
                   <MousePointer2 size={18} />
                   View Projects
                 </a>
-                <a className="button ghost" href="/dist/Sahil Sahu Resume POD AI.pdf">
+                <a className="button ghost" href="/public/Sahil Sahu Resume POD AI.pdf">
                   <Download size={18} />
                   Resume
                 </a>

@@ -1,13 +1,13 @@
 import { i } from "motion/react-client";
 
 export const profile = {
-  name: "Sahil Sahu",
-  initials: "SS",
+  name: "Anjali Lodhi",
+  initials: "AT",
   role: " Web Developer",
   location: "Bhopal, India",
-  email: "sahusahil480@gmail.com",
-  github: "https://github.com/Sahil7898-sahu",
-  linkedin: "https://www.linkedin.com/in/sahil-sahu-7a5454271/",
+  email: "anjalithakur9109@gmail.com",
+  github: "https://github.com/Anjali9109-Thakur",
+  linkedin: "https://www.linkedin.com/in/anjali-lodhi-03972832b/",
   summary:
     "",
 };
@@ -58,7 +58,7 @@ export const projects = [
     description:
       "Attendance Marking System is an automated attendance solution that uses Image Detection and Facial Recognition Technology to identify individuals and mark their attendance in real time.",
     stack: ["HTML", "CSS", "JavaScript", "Python", "OpenCV", "Face Recognition Library"],
-    github: "https://github.com/Sahil7898-sahu/Attendance-system-by-image-detection-and-face-recognition",
+    github: "https://github.com/Anjali9109-Thakur/Attendance-system-by-image-detection-and-face-recognition",
   },
   {
     name: "Student Management System for Library",
@@ -66,7 +66,7 @@ export const projects = [
     description:
       "A simple app concept for storing student information, marks, records, and quick search results.",
     stack: ["Python", "React", "UI Logic", "HTML", "CSS", "JavaScript"],
-    github: "https://github.com/Sahil7898-sahu/Student-Management-System-for-Libraries",
+    github: "https://github.com/Anjali9109-Thakur/Student-Management-System",
   },
   {
     name: "Smart Weather Monitoring System",
@@ -74,7 +74,7 @@ export const projects = [
     description:
       "A Smart Weather Monitoring System uses sensors and IoT technology to collect real-time weather data like temperature, humidity, and rainfall.",
     stack: ["JavaScript", "API", "Tailwind CSS", "Vite", "React", "OpenWeatherMap API", "Framer Motion"],
-    github: "https://github.com/Sahil7898-sahu/Smart-Weather-Monitoring-System",
+    github: "https://github.com/Anjali9109-Thakur/Smart-Weather-Intelligenece-For-Farmer",
     live: "https://smart-weather-monitoring-system-pearl.vercel.app/",
   },
 {
@@ -82,7 +82,7 @@ export const projects = [
   name:"AI Brain Tumer Detection System",
   type:"Web Application",
   description:"An AI Brain Tumor Detection System is a medical application that uses artificial intelligence and machine learning algorithms to analyze brain scans and identify the presence of tumors.",
-  stack:["Python","Machine Learning","Image Processing","UI Logic", "Tumer Data Set", "Kaggle"],
+  stack:["Python","Machine Learning","Image Processing","UI Logic", "Tumor Data Set", "Kaggle"],
   github:"https://github.com/nirjalamaran/AI-Brain-Tumur-Detection-from-MRI-Image",
 },
 {
@@ -90,14 +90,14 @@ export const projects = [
   type:"Web Application",
   description:"A Library Management System is a software application designed to manage and organize the operations of a library, including book inventory, member management, borrowing and returning of books, and other related tasks.",
   stack:["Node.js","React", "Tailwind CSS", "MongoDB", "Express.js", "RESTful API", "CORS", "JWT Authentication"],
-  github:"https://github.com/Sahil7898-sahu/Library-Management-System",
+  github:"https://github.com/Anjali9109-Thakur/Libraray-Management-system",
 },
 {
   name:"Expense Management System",
   type:"Web Application",
   description:"An Expense Management System is a software application designed to help individuals or businesses track and manage their expenses, providing features such as expense categorization, budgeting, and reporting.",
   stack:["React", "Tailwind CSS", "Lucide React", "Recharts", " Axios", "Node.js", "MongoDB","CORS", "RESTful API"],
-  github:"https://github.com/Sahil7898-sahu/Expense-Management"
+  github:"https://github.com/Anjali9109-Thakur/Expense-Management"
 },
 
 
@@ -106,7 +106,7 @@ export const projects = [
   type:"Web Application",
   description:"A Currency Converter is a software application that allows users to convert one currency into another based on current exchange rates, providing real-time conversion results.",
   stack:["HTML" , "CSS", "JavaScript", "Axios", "Exchange Rate API", "UI Logic", "Data Set"],        
-  github:"https://github.com/Sahil7898-sahu/Currency-Converter",
+  github:"https://github.com/Anjali9109-Thakur/Currency-Converter",
  
 },
 {
@@ -140,7 +140,7 @@ export const technicalEvents = [
     date: "30/04/2026",
     collagename: "SISTEC",
     mediaType: "image",
-    image: new URL("../assets/h1.jpeg", import.meta.url).href,
+    image: new URL("../assets/Screenshot 2026-05-25 235826.png", import.meta.url).href,
 
     description:
       "Participated in OIST Hackathon 2.0, building innovative solutions, improving teamwork, coding, problem-solving, and presentation skills under pressure.",
@@ -166,7 +166,7 @@ export const technicalEvents = [
     category: "Session",
     date: "6/04/2026",
     mediaType: "image",
-    media: new URL("../assets/h4.jpeg", import.meta.url).href,
+    media: new URL("../assets/Screenshot 2026-05-26 000103.png", import.meta.url).href,
     image: new URL("../assets/event-seminar.png", import.meta.url).href,
     description:
       "Attended Sagar Samarthya Placement Session, improving aptitude, communication, interview preparation, and professional development skills.",
@@ -214,24 +214,24 @@ export const coCurricularActivities = [
   },
   {
     id: "YI Co-Chairperson",
-    title: "Co-Chairperson of YI YUVA ",
+    title: "Innovation Co-Chair of YI YUVA ",
     category: "YI YUVA Bhopal",
     date: "15/03/2026",
     mediaType: "image",
-    image: new URL("../assets/Screenshot 2026-05-22 155114.png", import.meta.url).href,
+    image: new URL("../assets/Screenshot 2026-05-26 000420.png", import.meta.url).href,
     description:
-      "Served as Co-Chairperson of Yi Yuva Bhopal, contributing to event management, teamwork, leadership, and student engagement activities.",
+      "Served as Innovation Co-Chairperson of Yi Yuva Bhopal, contributing to event management, teamwork, leadership, and student engagement activities.",
     highlights: ["Teamwork", "Resilience", "Healthy competition"],
   },
   {
     id: "T & P",
-    title: "Coorporate Crew Head ",
+    title: "Coorporate Crew Coordinator ",
     category: "Training and Placement Cell",
     date: "10/05/2025",
     mediaType: "image",
-    image: new URL("../assets/IMG_20250922_145433915~3.jpg", import.meta.url).href,
+    image: new URL("../assets/Screenshot 2026-05-26 000935.png", import.meta.url).href,
     description:
-      "As Corporate Crew Head in the Training & Placement Cell, I coordinated industry interactions, managed teams, and supported placement activities effectively.",
+      "As Corporate Crew Coordinator in the Training & Placement Cell, I coordinated industry interactions, managed teams, and supported placement activities effectively.",
     highlights: ["Community impact", "Communication", "Leadership"],
   },
   {
@@ -240,7 +240,7 @@ export const coCurricularActivities = [
   category: " T&P SAC Committee ",
     date: "11/08/2025",
     mediaType: "image",
-    image: new URL("../assets/IMG_20250926_235531322~2.jpg", import.meta.url).href,
+    image: new URL("../assets/Screenshot 2026-05-26 000943.png", import.meta.url).href,
     description:
       "Active member of Student Activity Council (SAC) in the Training & Placement Committee, contributing to event management and student coordination.",
     highlights: ["Leadership", "Organization", "Peer mentoring"],
@@ -263,14 +263,14 @@ export const coCurricularActivities = [
 
 {
 
-  id: "NSSO Bhopal",
-  title: "NSSO Bhopal",
-  category: "NSSO",
+  id: "TedX Bhopal",
+  title: "TedX Bhopal",
+  category: "TedX Talk",
   date: "20/02/2026", 
   mediaType: "image",
-  image: new URL("../assets/nsso.jpeg", import.meta.url).href,
+  image: new URL("../assets/Screenshot 2026-05-26 001213.png", import.meta.url).href,
   description:
-    "Proud to receive a participation Reward from NSSO Bhopal during the 75th National Sample Survey celebration, inspiring me toward data-driven learning and growth.",
+    "Attended TedX Bhopal, gaining insights from inspiring speakers and thought leaders on various topics, fostering personal growth and motivation.",
   highlights: ["Community impact", "Teamwork", "Social responsibility"],
 }
 
