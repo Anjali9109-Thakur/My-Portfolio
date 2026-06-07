@@ -590,7 +590,7 @@ function App() {
                   <MousePointer2 size={18} />
                   View Projects
                 </a>
-                <a className="button ghost" href="/public/Sahil Sahu Resume POD AI.pdf">
+                <a className="button ghost" href="/public/AnjaliResumepod.pdf">
                   <Download size={18} />
                   Resume
                 </a>
