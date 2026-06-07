@@ -2,7 +2,7 @@ import { i } from "motion/react-client";
 
 export const profile = {
   name: "Anjali Lodhi",
-  initials: "AT",
+  initials: "AL",
   role: " Web Developer",
   location: "Bhopal, India",
   email: "anjalithakur9109@gmail.com",
