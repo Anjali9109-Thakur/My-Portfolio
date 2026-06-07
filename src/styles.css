@@ -1052,6 +1052,58 @@ textarea {
   text-align: center;
 }
 
+/* Resume Modal Styles */
+.modal-overlay {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  position: fixed;
+  z-index: 200;
+}
+
+.modal-content {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  max-height: 900px;
+  max-width: 900px;
+  position: relative;
+  width: 90%;
+}
+
+.modal-close {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  height: 42px;
+  justify-content: center;
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  width: 42px;
+  z-index: 1;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.resume-iframe {
+  border: none;
+  border-radius: 8px;
+  flex: 1;
+  width: 100%;
+}
+
 @media (max-width: 920px) {
   .menu-button {
     display: inline-flex;
@@ -1106,6 +1158,11 @@ textarea {
   .dashboard-side {
     position: static;
   }
+
+  .modal-content {
+    height: 95vh;
+    max-width: 95vw;
+  }
 }
 
 @media (max-width: 560px) {
@@ -1145,6 +1202,21 @@ textarea {
 
   .owner-actions .button {
     width: 100%;
+  }
+
+  .modal-overlay {
+    padding: 20px;
+  }
+
+  .modal-content {
+    height: 85vh;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .modal-close {
+    right: 12px;
+    top: 12px;
   }
 }
 

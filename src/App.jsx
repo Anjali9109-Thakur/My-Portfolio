@@ -570,6 +570,38 @@ function DashboardPage({
   );
 }
 
+function ResumeModal({ isOpen, onClose }) {
+  if (!isOpen) return null;
+
+  return (
+    <motion.div
+      className="modal-overlay"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+    >
+      <motion.div
+        className="modal-content"
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button className="modal-close" onClick={onClose}>
+          <X size={24} />
+        </button>
+        <iframe
+          src="/AnjaliResumepod.pdf"
+          type="application/pdf"
+          title="Resume"
+          className="resume-iframe"
+        />
+      </motion.div>
+    </motion.div>
+  );
+}
+
 function App() {
   const [page, setPage] = useState(getPageFromHash);
   const [showResume, setShowResume] = useState(false);
@@ -630,10 +662,17 @@ function App() {
                   <MousePointer2 size={18} />
                   View Projects
                 </a>
+<<<<<<< HEAD
                 <a className="button ghost" href="/AnjaliResumepod.pdf" download>  ाँ  
   <Download size={18} />
   Resume
 </a>
+=======
+                <button className="button ghost" onClick={() => setShowResume(true)}>
+                  <Download size={18} />
+                  Resume
+                </button>
+>>>>>>> 21e68d9 (Updated portfolio content and resume)
               </motion.div>
             </motion.div>
 
@@ -905,6 +944,10 @@ I aim to create innovative, responsive, and impactful projects that combine crea
       <footer className="site-footer">
         <p>Engineered with creativity and driven by technology.</p>
       </footer>
+
+      <AnimatePresence>
+        <ResumeModal isOpen={showResume} onClose={() => setShowResume(false)} />
+      </AnimatePresence>
     </>
   );
 }
