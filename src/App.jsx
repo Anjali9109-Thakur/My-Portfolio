@@ -246,46 +246,6 @@ function MediaShowcase({ eyebrow, title, text, items, id, variant = "standard" }
   );
 }
 
-function ResumeModal({ isOpen, onClose }) {
-  if (!isOpen) return null;
-
-  return (
-    <div className="resume-modal-overlay" onClick={onClose}>
-      <div className="resume-modal-content" onClick={(e) => e.stopPropagation()}>
-        <div className="resume-modal-header">
-          <h2>My Resume</h2>
-          <button
-            className="icon-button"
-            type="button"
-            aria-label="Close resume"
-            onClick={onClose}
-          >
-            <X size={18} />
-          </button>
-        </div>
-
-        <div className="resume-modal-body">
-          <iframe
-            src="/AnjaliResumepod.pdf"  // ✅ यहाँ
-            title="Anjali Resume"
-            className="resume-iframe"
-          />
-        </div>
-
-        <div className="resume-modal-footer">
-          <a
-            href="/AnjaliResumepod.pdf"  // ✅ यहाँ भी
-            download="AnjaliResumepod.pdf"
-            className="button primary"
-          >
-            <Download size={18} />
-            Download Resume
-          </a>
-        </div>
-      </div>
-    </div>
-  );
-}
 function DashboardPage({
   eyebrow,
   title,
@@ -648,13 +608,14 @@ function App() {
               initial="hidden"
               animate="visible"
             >
+              
               <motion.h1 variants={fadeUp}>
                 Hi, I am <span>{profile.name}</span>.
                 <br />
                 I am a Software Engineer.
               </motion.h1>
               <motion.p className="hero-text" variants={fadeUp}>
-                {profile.summary}
+                {profile.summary} 
               </motion.p>
 
               <motion.div className="hero-actions" variants={fadeUp}>
@@ -662,17 +623,10 @@ function App() {
                   <MousePointer2 size={18} />
                   View Projects
                 </a>
-<<<<<<< HEAD
-                <a className="button ghost" href="/AnjaliResumepod.pdf" download>  ाँ  
-  <Download size={18} />
-  Resume
-</a>
-=======
                 <button className="button ghost" onClick={() => setShowResume(true)}>
                   <Download size={18} />
                   Resume
                 </button>
->>>>>>> 21e68d9 (Updated portfolio content and resume)
               </motion.div>
             </motion.div>
 
@@ -713,6 +667,9 @@ function App() {
 Currently pursuing engineering, I enjoy building smart and user-friendly solutions for real-world problems.
 My strengths include problem-solving, teamwork, and continuously learning new technologies.
 I aim to create innovative, responsive, and impactful projects that combine creativity with technology.
+              </p>
+              <p>
+               
               </p>
             </motion.div>
 
@@ -937,16 +894,15 @@ I aim to create innovative, responsive, and impactful projects that combine crea
             ))}
           </div>
         </section>
-      </main>
 
-      <ResumeModal isOpen={showResume} onClose={() => setShowResume(false)} />
+      </main>
 
       <footer className="site-footer">
         <p>Engineered with creativity and driven by technology.</p>
       </footer>
 
       <AnimatePresence>
-        <ResumeModal isOpen={showResume} onClose={() => setShowResume(false)} />
+        {showResume && <ResumeModal isOpen={showResume} onClose={() => setShowResume(false)} />}
       </AnimatePresence>
     </>
   );
