@@ -266,7 +266,7 @@ function ResumeModal({ isOpen, onClose }) {
 
         <div className="resume-modal-body">
           <iframe
-            src="/AnjaliResumepod.pdf"
+            src="/AnjaliResumepod.pdf"  // ✅ यहाँ
             title="Anjali Resume"
             className="resume-iframe"
           />
@@ -274,7 +274,7 @@ function ResumeModal({ isOpen, onClose }) {
 
         <div className="resume-modal-footer">
           <a
-            href="/AnjaliResumepod.pdf"
+            href="/AnjaliResumepod.pdf"  // ✅ यहाँ भी
             download="AnjaliResumepod.pdf"
             className="button primary"
           >
@@ -286,7 +286,6 @@ function ResumeModal({ isOpen, onClose }) {
     </div>
   );
 }
-
 function DashboardPage({
   eyebrow,
   title,
@@ -631,10 +630,10 @@ function App() {
                   <MousePointer2 size={18} />
                   View Projects
                 </a>
-                <a className="button ghost" href="/AnjaliResumepod.pdf" download>
-                  <Download size={18} />
-                  Resume
-                </a>
+                <a className="button ghost" href="/AnjaliResumepod.pdf" download>  ाँ  
+  <Download size={18} />
+  Resume
+</a>
               </motion.div>
             </motion.div>
 
